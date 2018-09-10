@@ -1,40 +1,13 @@
-Thu Sep 06 13:25:57 EDT 2018 Thread[main,5,main] Cleanup action starting
-java.sql.SQLException: Database 'ProtoMoney' not found.
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
-	at java.sql.DriverManager.getConnection(DriverManager.java:664)
-	at java.sql.DriverManager.getConnection(DriverManager.java:247)
-	at protomoney.ProtoMoney.main(ProtoMoney.java:30)
-Caused by: ERROR XJ004: Database 'ProtoMoney' not found.
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
-	... 14 more
-============= begin nested exception, level (1) ===========
-ERROR XJ004: Database 'ProtoMoney' not found.
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
-	at java.sql.DriverManager.getConnection(DriverManager.java:664)
-	at java.sql.DriverManager.getConnection(DriverManager.java:247)
-	at protomoney.ProtoMoney.main(ProtoMoney.java:30)
-============= end nested exception, level (1) ===========
-Cleanup action completed
+----------------------------------------------------------------
+Mon Sep 10 13:20:47 EDT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0165-c480-0045-000006f5d210 
+on database directory C:\Users\jrodrig1\Documents\NetBeansProjects\ProtoMoney\ProtoMoney with class loader sun.misc.Launcher$AppClassLoader@610455d6 
+Loaded from file:/C:/Program%20Files/Java/jdk1.8.0_112/db/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_112-b15
+user.dir=C:\Users\jrodrig1\Documents\NetBeansProjects\ProtoMoney
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
