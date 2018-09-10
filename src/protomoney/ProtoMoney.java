@@ -12,13 +12,13 @@ import java.sql.*;
 //import java.sql.SQLException;
 //import java.sql.Statement;
 //import java.sql.ResultSetMetaData;
-//import org.apache.derby.jdbc.EmbeddedDriver; Driver para la base de datos incluida
+import org.apache.derby.jdbc.EmbeddedDriver;
 
 public class ProtoMoney {
     /**
      * @param args the command line arguments
      */
-    private static String dbnombre = "jdbc:derby://localhost:1527/Proto2; user= app; password= app";
+    private static String dbnombre = "jdbc:derby:Protoss; create = true; user= app; password= app";
     private static Connection protoConnObj = null; //Allows to connect to DB
     private static Statement StatObj=null; //Allows to run SQL procedures
     private static ResultSet protoResObj=null; //Stores the SQL procedures data
@@ -26,7 +26,8 @@ public class ProtoMoney {
     public static void main(String[] args) {
        // Solo nombrando los procedimientos, todos estan definidos abajo
        createConnection();
-       insertTabla();
+       creaTabla();
+       //insertTabla();
        // DespliegaTabla();
        // termina();
     } 
@@ -34,6 +35,7 @@ public class ProtoMoney {
     //Crea una conexion a la base de datos usando los argumentos abajo    
     private static void createConnection(){
     try{
+        //Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
         protoConnObj = DriverManager.getConnection(dbnombre);
         }
     catch (SQLException e)
@@ -41,6 +43,27 @@ public class ProtoMoney {
         e.printStackTrace();
     }
     }
+    
+    //Crea una tabla llamada PM_ACC_TYPE
+    private static void creaTabla(){
+    String tabla = "CREATE TABLE pm_acc_type (\n"
+                + " codigo char(3) NOT NULL, \n"
+                + " descrip char(30)\n"
+                + ")";
+
+    //aqui va la secuencia para definir el Statement y crear la tabla
+    try 
+        {
+        protoConnObj = DriverManager.getConnection(dbnombre);
+        Statement StatObj3 = protoConnObj.createStatement();
+        StatObj3.execute(tabla);
+        }
+    catch (SQLException e)
+        {
+        e.printStackTrace();
+        }
+    }
+    
     
     //Crea una secuencia de comandos para insertar en una tabla    
     private static void insertTabla(){
