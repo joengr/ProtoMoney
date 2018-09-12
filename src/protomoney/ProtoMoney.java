@@ -20,10 +20,10 @@ public class ProtoMoney {
     public static void main(String[] args) {
     // Solo nombrando los procedimientos, todos estan definidos abajo
        createConnection();
-       creaTabla();
+       //creaTabla();
        insertTabla();
        // DespliegaTabla();
-       termina();
+       //termina();
     } 
     
     //Crea una conexion a la base de datos usando los argumentos abajo    
@@ -55,7 +55,7 @@ public class ProtoMoney {
     //Crea una secuencia de comandos para insertar en una tabla    
     private static void insertTabla(){
         String tabla = "uno";
-        String Nombre = "DDD";
+        String Nombre = "Meh";
         String pone = String.format("insert into %s values (\'%s\')", //Formato de una variable string para meter los datos string en variables
                                     tabla, Nombre);
       //String campo = pasa; no se necesitan los nombres de los campos
