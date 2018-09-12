@@ -22,7 +22,7 @@ public class ProtoMoney {
        createConnection();
        //creaTabla();
        insertTabla();
-       // DespliegaTabla();
+       despliegaTabla();
        //termina();
     } 
     
@@ -54,10 +54,13 @@ public class ProtoMoney {
     
     //Crea una secuencia de comandos para insertar en una tabla    
     private static void insertTabla(){
-        String tabla = "uno";
-        String Nombre = "Meh";
-        String pone = String.format("insert into %s values (\'%s\')", //Formato de una variable string para meter los datos string en variables
-                                    tabla, Nombre);
+        String tabla = "PM_REGISTRO";
+        String fecha = "2018-09-01";
+        String cuenta = "Santander Cheques";
+        String cliente = "Jonas 2";
+        String desc = "Pago de tarjeta";
+        String pone = String.format("insert into %s values (4,\'%s\',\'%s\',\'%s\',\'%s\',-299,3654.51)", //Formato de una variable string para meter los datos string en variables
+                                    tabla, fecha, cuenta, cliente, desc);
       //String campo = pasa; no se necesitan los nombres de los campos
 
     //aqui va la secuencia para definir el Statement e insertar en la tabla
@@ -71,6 +74,32 @@ public class ProtoMoney {
         e.printStackTrace();
         }
     }
+    
+    private static void despliegaTabla(){ //Imprime en pantalla los valores de la tabla registro
+        //String miras = String.format("insert into %s values (\'%s\')", tabla, Nombre);
+    try{
+        Statement StatObj2 = protoConnObj.createStatement();
+        ResultSet protoResObj = StatObj2.executeQuery("select * from app.pm_registro");
+        
+        while (protoResObj.next()) {
+            //System.out.println("id:\t" + protoResObj.getString(1));
+            System.out.println("fecha:\t" + protoResObj.getString(2));
+            System.out.println("cuenta:\t" + protoResObj.getString(3));
+            System.out.println("cliente:\t" + protoResObj.getString(4));
+            System.out.println("descripcion:\t" + protoResObj.getString(5));
+            System.out.println("cantidad:\t" + protoResObj.getString(6));
+            System.out.println("ROW5:\t" + protoResObj.getString(7));
+            System.out.println();
+        }
+        
+        StatObj2.close();
+        }
+    catch (SQLException e)
+    {
+        e.printStackTrace();
+    }
+    }
+    
     
     private static void termina(){ //Da de baja la base de datos y el servicio
     try{
