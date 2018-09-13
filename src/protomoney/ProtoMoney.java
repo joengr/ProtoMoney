@@ -21,6 +21,7 @@ public class ProtoMoney {
     // Solo nombrando los procedimientos, todos estan definidos abajo
        createConnection();
        //creaTabla();
+       //llamaopicon();
        metedb("2018-06-24", "BoA Checking", "Dos Mas", "Para mas pagos apropiados", -25.63);
        despliegaTabla();
        //termina();
