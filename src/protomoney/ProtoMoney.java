@@ -21,7 +21,7 @@ public class ProtoMoney {
     // Solo nombrando los procedimientos, todos estan definidos abajo
        createConnection();
        //creaTabla();
-       insertTabla();
+       metedb("2018-06-24", "BoA Checking", "Dos Mas", "Para mas pagos apropiados", -25.63);
        despliegaTabla();
        //termina();
     } 
@@ -51,21 +51,25 @@ public class ProtoMoney {
         }
     }
     
-    
-    //Crea una secuencia de comandos para insertar en una tabla    
-    private static void insertTabla(){
+    public static void metedb (String fecs, String cues, String clts, String descs, Double cats){
         String tabla = "PM_REGISTRO";
-        String fecha = "2018-09-01";
-        String cuenta = "Santander Cheques";
-        String cliente = "Jonas 2";
-        String desc = "Pago de tarjeta";
-        String pone = String.format("insert into %s values (4,\'%s\',\'%s\',\'%s\',\'%s\',-299,3654.51)", //Formato de una variable string para meter los datos string en variables
-                                    tabla, fecha, cuenta, cliente, desc);
+        String fecha = fecs;
+        String cuenta = cues;
+        String cliente = clts;
+        String desc = descs;
+        Double cnts = cats;
+        Integer sigue = 1;
       //String campo = pasa; no se necesitan los nombres de los campos
 
     //aqui va la secuencia para definir el Statement e insertar en la tabla
     try {
         Statement StatObj2 = protoConnObj.createStatement();
+        ResultSet protoResObj = StatObj2.executeQuery("select * from app.pm_registro");
+        while (protoResObj.next()) {
+               sigue ++; 
+               }
+        String pone = String.format("insert into %s values (%s,\'%s\',\'%s\',\'%s\',\'%s\',%s,3654.51)", //Formato de una variable string para meter los datos string en variables
+                                    tabla, sigue, fecha, cuenta, cliente, desc, cnts);
         StatObj2.execute(pone);
         StatObj2.close();
         }
@@ -80,15 +84,12 @@ public class ProtoMoney {
     try{
         Statement StatObj2 = protoConnObj.createStatement();
         ResultSet protoResObj = StatObj2.executeQuery("select * from app.pm_registro");
-        
+        System.out.println("fecha:\t\t" +"cuenta:\t\t\t" +"cliente:\t\t"+"descripcion:\t\t" +"cantidad:\t\t"+"saldo:");
+        System.out.println("===============================================================================================================================");
         while (protoResObj.next()) {
-            //System.out.println("id:\t" + protoResObj.getString(1));
-            System.out.println("fecha:\t" + protoResObj.getString(2));
-            System.out.println("cuenta:\t" + protoResObj.getString(3));
-            System.out.println("cliente:\t" + protoResObj.getString(4));
-            System.out.println("descripcion:\t" + protoResObj.getString(5));
-            System.out.println("cantidad:\t" + protoResObj.getString(6));
-            System.out.println("ROW5:\t" + protoResObj.getString(7));
+            for (int i=2;i<8;i++){
+               System.out.print(protoResObj.getString(i)+ "\t"); 
+            }
             System.out.println();
         }
         
