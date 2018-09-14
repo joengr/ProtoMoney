@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Thu Sep 13 16:28:43 EDT 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0165-d49f-2079-000006f681d8 
-on database directory C:\Users\jrodrig1\Documents\NetBeansProjects\ProtoMoney\Protoss with class loader sun.misc.Launcher$AppClassLoader@610455d6 
-Loaded from file:/C:/Program%20Files/Java/jdk1.8.0_112/db/lib/derby.jar
+Fri Sep 14 11:48:03 EDT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0165-d8c4-8826-00000e89b998 
+on database directory D:\DataMaster IV\OneDrive\Documents\NetBeansProjects\ProtoMoney\Protoss with class loader sun.misc.Launcher$AppClassLoader@610455d6 
+Loaded from file:/D:/Program%20Files/Java/db-derby-10.14.2.0-bin/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_112-b15
-user.dir=C:\Users\jrodrig1\Documents\NetBeansProjects\ProtoMoney
+java.runtime.version=1.8.0_181-b13
+user.dir=D:\DataMaster IV\OneDrive\Documents\NetBeansProjects\ProtoMoney
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1
