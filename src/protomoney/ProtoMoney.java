@@ -96,7 +96,7 @@ public class ProtoMoney {
     }
     
     private static void despliegaTabla(){ //Imprime en pantalla los valores de la tabla registro
-        //String miras = String.format("insert into %s values (\'%s\')", tabla, Nombre);
+        //String miras = String.format("insert into %s values (\'%s\')", tabla, Nombre); bien naco el miras
     try{
         Statement StatObj2 = protoConnObj.createStatement();
         ResultSet protoResObj = StatObj2.executeQuery("select * from app.test");
