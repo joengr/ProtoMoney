@@ -19,13 +19,13 @@ public class ProtoMoney {
     private static ResultSet protoResObj=null; //Stores the SQL procedures data
     private static boolean salida = true;
     private Integer opcion;
+    static Registro tablas = new Registro(); //clase que contiene los procedimientos de la tabla REGISTRO
     
     public static void main(String[] args) {
     // Solo nombrando los procedimientos, todos estan definidos abajo
        createConnection();
        while (salida){
        llamaopcion();
-       //termina();
        }
     } 
     
@@ -36,18 +36,20 @@ public class ProtoMoney {
     System.out.println("===============================");
     System.out.println("Nueva entrada:       1");
     System.out.println("Consultar valores:   2");
+    System.out.println("Salir del sistema:   3");
     System.out.print("Seleccion: ");    
     int n = reader.nextInt();  //Esta es la linea para leer lo que el usuario teclea
-   // System.out.print("leido: ");
     switch (n){
         case 1:
-            metedb("Santander Cheques","2018-08-19", "Jose Rodriguez", "Sueldo del 22 de Agosto", 4087.53, "SBT");
-            salida = false;
+            tablas.insertaDB("BoA Cheques","2017-10-16", "Laura Gatus Diego", "Gastos en ShopRite y Trader Joes", -33.59, "SBT");
             break;
         case 2:
-            despliegaTabla();
-            salida = false;
+            tablas.despDB();
             break;
+        case 3:
+            salida=false;
+            termina();
+            break;            
         default:
             System.out.println("Numero no valido");
             salida = true;
@@ -55,11 +57,8 @@ public class ProtoMoney {
     }
     
     }
-    
-    
-    
-    //Crea una conexion a la base de datos usando los argumentos abajo    
-    private static void createConnection(){
+     
+    private static void createConnection(){       //Crea una conexion a la base de datos usando los argumentos abajo   
     try{
         protoConnObj = DriverManager.getConnection(dbnombre);
         }
@@ -68,55 +67,6 @@ public class ProtoMoney {
         e.printStackTrace();
     }
     }
-    
-    public static void metedb (String cues, String fecs, String clts, String descs, Double cats, String SubC){
-        String tabla = "PM_REGISTRY";
-        String cuenta = cues;
-        String fecha = fecs;
-        String cliente = clts;
-        String desc = descs;
-        Double cnts = cats;
-        String catego = SubC;
-
-      //String campo = pasa; no se necesitan los nombres de los campos
-
-    //aqui va la secuencia para definir el Statement e insertar en la tabla
-    try {
-        Statement StatObj2 = protoConnObj.createStatement();
-        //ResultSet protoResObj = StatObj2.executeQuery("select * from app.pm_registry"); no se necesita, estaba solo para leer e insertar al final
-        String pone = String.format("insert into %s values (\'%s\',\'%s\',\'%s\',\'%s\',%s,\'%s\')", //Formato de una variable string para meter los datos string en variables
-                                    tabla, cuenta, fecha, cliente, desc, cnts, catego);
-        StatObj2.execute(pone);
-        StatObj2.close();
-        }
-    catch (SQLException e)
-        {
-        e.printStackTrace();
-        }
-    }
-    
-    private static void despliegaTabla(){ //Imprime en pantalla los valores de la tabla registro
-        //String miras = String.format("insert into %s values (\'%s\')", tabla, Nombre); bien naco el miras
-    try{
-        Statement StatObj2 = protoConnObj.createStatement();
-        ResultSet protoResObj = StatObj2.executeQuery("select * from app.test");
-        System.out.println("cuenta:\t\t" +"fecha:\t\t\t" +"cliente:\t\t"+"descripcion:\t\t" +"cantidad:\t\t"+"categoria: \t\t"+"subcategoria: ");
-        System.out.println("==================================================================================================================================================");
-        while (protoResObj.next()) {
-            for (int i=1;i<8;i++){
-               System.out.print(protoResObj.getString(i)+ "\t"); 
-            }
-            System.out.println();
-        }
-        
-        StatObj2.close();
-        }
-    catch (SQLException e)
-    {
-        e.printStackTrace();
-    }
-    }
-    
     
     private static void termina(){ //Da de baja la base de datos y el servicio
     try{
